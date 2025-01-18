@@ -1,0 +1,130 @@
+body {
+  background-color: rgb(157, 155, 155);
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.content {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-margin-single-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-font {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.toolbar button {
+  background-color: #5E17EB;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  width: 20px;
+  height: 20px;
+}
+
+#profile-picture .container {
+  display: flex;
+  justify-content: center;
+}
+
+.parent {
+  position: relative;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder {
+  width: 100px;
+  height: 100px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+}
+
+.icon {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  background-color: #5E17EB;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+form div {
+  margin-bottom: 20px;
+}
+
+label.body-font {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"], input[type="date"], select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.875rem;
+}
+
+.gender, .vaccination-status, .microchip-status, .neutered-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filled-buttons {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  background-color: #5E17EB;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filled-buttons:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

@@ -1,0 +1,229 @@
+<app-navbar></app-navbar>
+<div class="blog-header">    
+    <!-- Title, Description, and Image -->
+    <div class="header-content">
+      <div class="text-content">
+        <h1>Blog</h1>
+        <p>Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Amet purus gravida quis blandit turpis.</p>
+      </div>
+      <img src="path/to/chameleon-image.png" alt="Chameleon" class="header-image">
+    </div>
+  </div>
+  
+
+
+  <div class="blog-container">
+    <!-- Blog Posts Section -->
+    <div class="blog-posts">
+      <!-- Blog Card 1 -->
+      <div class="blog-card">
+        <img src="path/to/cat-image.jpg" alt="Cat Image">
+        <div class="blog-content">
+          <span class="blog-tag">PET HEALTH</span>
+          <h3>Top Cat Foods to Consider If You Are a First Time Owner</h3>
+          <p>By Corabelle Durand · 02.01.2022</p>
+          <p>Amet porttitor eget dolor morbi non arcu risus quis varius...</p>
+          <a href="#">Read Post ➜</a>
+        </div>
+      </div>
+  
+      <!-- Blog Card 2 -->
+      <div class="blog-card">
+        <img src="path/to/dog-image1.jpg" alt="Dog Image">
+        <div class="blog-content">
+          <span class="blog-tag">PET HEALTH</span>
+          <h3>6 Tips to Keep Your Pet Healthy and Happy</h3>
+          <p>By Corabelle Durand · 02.01.2022</p>
+          <p>Est pellentesque elit ullamcorper dignissim cras tincidunt...</p>
+          <a href="#">Read Post ➜</a>
+        </div>
+      </div>
+  
+      <!-- Blog Card 3 -->
+      <div class="blog-card">
+        <img src="path/to/dog-image2.jpg" alt="Dog Image">
+        <div class="blog-content">
+          <span class="blog-tag">PET FOOD</span>
+          <h3>Choosing the Right Food for Your Pet</h3>
+          <p>By Corabelle Durand · 02.01.2022</p>
+          <p>Semper feugiat nibh sed pulvinar proin gravida...</p>
+          <a href="#">Read Post ➜</a>
+        </div>
+      </div>
+  
+      <!-- Blog Card 4 -->
+      <div class="blog-card">
+        <img src="path/to/dog-image3.jpg" alt="Dog Image">
+        <div class="blog-content">
+          <span class="blog-tag">PET TOYS</span>
+          <h3>How to Choose the Right Toys for Your Dog?</h3>
+          <p>By Corabelle Durand · 02.01.2022</p>
+          <p>Lucas luctus accumsan tortor posuere ac ut consequat...</p>
+          <a href="#">Read Post ➜</a>
+        </div>
+      </div>
+  
+      <!-- Blog Card 5 -->
+      <div class="blog-card">
+        <img src="path/to/dog-image4.jpg" alt="Dog Image">
+        <div class="blog-content">
+          <span class="blog-tag">PET HEALTH</span>
+          <h3>Your Dog Desperately Needs Attention From You</h3>
+          <p>By Corabelle Durand · 02.01.2022</p>
+          <p>Amet porttitor eget dolor morbi non arcu risus quis varius...</p>
+          <a href="#">Read Post ➜</a>
+        </div>
+      </div>
+  
+      <!-- Blog Card 6 -->
+      <div class="blog-card">
+        <img src="path/to/dog-image5.jpg" alt="Dog Image">
+        <div class="blog-content">
+          <span class="blog-tag">PET HEALTH</span>
+          <h3>5 Crazy Things Dogs Do When Left Alone At Home</h3>
+          <p>By Corabelle Durand · 02.01.2022</p>
+          <p>Est pellentesque elit ullamcorper dignissim cras tincidunt...</p>
+          <a href="#">Read Post ➜</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <!-- Categories Section -->
+      <div class="sidebar-section">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#">Pet Health (23)</a></li>
+          <li><a href="#">Grooming (31)</a></li>
+          <li><a href="#">Pet Food (34)</a></li>
+          <li><a href="#">Training (18)</a></li>
+          <li><a href="#">Pet Toys (19)</a></li>
+        </ul>
+      </div>
+  
+      <!-- Related Blogs Section -->
+      <div class="sidebar-section">
+        <h4>Related Blogs</h4>
+        <ul>
+          <li><a href="#">How to Protect Your Cat from Fleas</a></li>
+          <li><a href="#">Why Are Dogs Scared of Fireworks?</a></li>
+          <li><a href="#">How Do Dogs Digest Their Food?</a></li>
+        </ul>
+      </div>
+  
+      <!-- Product Tag Section -->
+      <div class="sidebar-section">
+        <h4>Product Tag</h4>
+        <div class="tags">
+          <a href="#">Toys</a>
+          <a href="#">Colors</a>
+          <a href="#">Nature</a>
+          <a href="#">Healthy</a>
+          <a href="#">Pillow</a>
+          <a href="#">Training</a>
+          <a href="#">Brand</a>
+        </div>
+      </div>
+  
+      <!-- Calendar Section -->
+      <div class="calendar-container">
+        <!-- Calendar Header with Month Navigation -->
+        <div class="calendar-header">
+          <button (click)="goToPrevMonth()">❮</button>
+          <span>{{ getMonthYear() }}</span>
+          <button (click)="goToNextMonth()">❯</button>
+        </div>
+      
+        <!-- Calendar Table -->
+        <table class="calendar-table">
+          <thead>
+            <tr>
+              <th>Sun</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let week of weeks">
+              <td *ngFor="let day of week">
+                <span *ngIf="day !== null">{{ day }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Archives Section -->
+      <div class="sidebar-section">
+        <h4>Archives</h4>
+        <ul>
+          <li><a href="#">January (22)</a></li>
+          <li><a href="#">February (12)</a></li>
+          <li><a href="#">March (24)</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Pagination Section -->
+<div class="pagination">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+  </div>
+  
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-content">
+      <!-- Company Information -->
+      <div class="company-info">
+        <img src="path/to/logo.png" alt="nSama Pet Care Logo" class="footer-logo">
+        <p>
+          Tristique nulla aliquet enim tortor at auctor urna nunc. Massa enim nec dui nunc mattis enim ut tellus.
+          Sed ut perspiciatis unde.
+        </p>
+        <div class="phone-number">
+          <p>(973) 77690000</p>
+          <p>Got Questions? Call us 24/7</p>
+        </div>
+      </div>
+  
+      <!-- Working Hours -->
+      <div class="working-hours">
+        <h4>Working Hours</h4>
+        <p>Mon - Fri: <strong>7am - 6pm</strong></p>
+        <p>Saturday: <strong>9am - 4pm</strong></p>
+        <p>Sunday: <strong>Closed</strong></p>
+      </div>
+  
+      <!-- Useful Links -->
+      <div class="useful-links">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Delivery</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Sales</a></li>
+        </ul>
+      </div>
+  
+      <!-- Newsletter Signup -->
+      <div class="newsletter">
+        <h4>Newsletter</h4>
+        <p>Be first in the queue! Get our latest news straight to your inbox.</p>
+        <form>
+          <input type="email" placeholder="Email">
+          <button type="submit">➤</button>
+        </form>
+      </div>
+    </div>
+  </footer>

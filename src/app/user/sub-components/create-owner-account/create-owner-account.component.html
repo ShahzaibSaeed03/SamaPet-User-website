@@ -1,0 +1,169 @@
+<app-navbar></app-navbar>
+<header>
+    <div class="header-margin-Single-Line">
+      <label class="titleFont">Profile setup</label>
+    </div>
+  </header>
+  
+  <main class="padding">
+    <div class="center-content">
+      <div class="round-picture-container">
+        <img [src]="profileImagePreview || 'assets/mypet.svg'" class="round-image" />
+        <input type="file" #fileInput (change)="onFileSelected($event)" hidden />
+        <div class="camera-container" (click)="fileInput.click()">
+          <img class="file-button" src="assets/icons/camera.svg" alt="camera" />
+        </div>
+      </div>
+      <p class="profile-subtitle bodyFont">Add Profile Photo</p>
+    </div>
+  
+    <form (ngSubmit)="completeProfile()" [formGroup]="profileForm">
+      <div class="bodyFont SmallMargin">
+        <label class="bodyFont">First Name</label>
+        <div class="roundedInput">
+          <input class="bodyFont textGray" placeholder="Enter your name" formControlName="first_name" required />
+        </div>
+        <div class="bodyFont lightFont red-text" *ngIf="profileForm.get('first_name').invalid && profileForm.get('first_name').touched">
+          <span *ngIf="profileForm.get('first_name').errors?.required">First Name is required.</span>
+          <span *ngIf="profileForm.get('first_name').errors?.minlength">First Name must be at least 3 characters long.</span>
+          <span *ngIf="profileForm.get('first_name').errors?.maxlength">First Name cannot be more than 31 characters long.</span>
+          <span *ngIf="profileForm.get('first_name').errors?.pattern">First Name can only contain alphabetic characters.</span>
+        </div>
+        <br />
+  
+        <label class="bodyFont">Last Name</label>
+        <div class="roundedInput">
+          <input class="bodyFont textGray" placeholder="Last Name" formControlName="last_name" required />
+        </div>
+        <div class="bodyFont lightFont red-text" *ngIf="profileForm.get('last_name').invalid && profileForm.get('last_name').touched">
+          <span *ngIf="profileForm.get('last_name').errors?.required">Last Name is required.</span>
+          <span *ngIf="profileForm.get('last_name').errors?.minlength">Last Name must be at least 3 characters long.</span>
+          <span *ngIf="profileForm.get('last_name').errors?.maxlength">Last Name cannot be more than 31 characters long.</span>
+          <span *ngIf="profileForm.get('last_name').errors?.pattern">Last Name can only contain alphabetic characters.</span>
+        </div>
+        <br />
+  
+        <label class="bodyFont">Phone</label>
+        <div class="roundedInput">
+          <input class="bodyFont textGray" placeholder="Phone Number" formControlName="phone" required />
+        </div>
+        <div *ngIf="profileForm.get('phone').invalid && profileForm.get('phone').touched" class="bodyFont lightFont red-text">
+          Phone is required.
+        </div>
+        <br />
+  
+        <label class="bodyFont">Location</label>
+        <div class="location-buttons">
+          <button type="button" class="locbutton" (click)="showHome()">House</button>
+          <button type="button" class="locbutton" (click)="showAppartment()">Apartment</button>
+          <button type="button" class="locbutton" (click)="showOffice()">Office</button>
+        </div>
+  
+        <div *ngIf="location === 0" class="location">
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="city" placeholder="City" />
+          </div>
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="house" placeholder="House" />
+          </div>
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="road" placeholder="Road" />
+          </div>
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="block" placeholder="Block" />
+          </div>
+        </div>
+  
+        <div *ngIf="location !== null && location > 0">
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="building_name" placeholder="Building name" />
+          </div>
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="city" placeholder="City" />
+          </div>
+        </div>
+  
+        <div *ngIf="location === 1">
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="apt_number" placeholder="Apt. number" />
+          </div>
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="floor" placeholder="Floor" />
+          </div>
+        </div>
+  
+        <div *ngIf="location === 2">
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="company" placeholder="Company" />
+          </div>
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="floor" placeholder="Floor" />
+          </div>
+        </div>
+  
+        <div *ngIf="location !== null && location > 0">
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="road" placeholder="Road" />
+          </div>
+          <div class="roundedInput">
+            <input class="bodyFont textGray" formControlName="block" placeholder="Block" />
+          </div>
+        </div>
+  
+        <label class="bodyFont">Nationality</label>
+        <div class="roundedInpu">
+          <select class="bodyFont textGray" formControlName="nationality" required>
+            <option value="Bahrain">Bahrain</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="UK">UK</option>
+            <option value="Australia">Australia</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="bodyFont lightFont red-text" *ngIf="profileForm.get('nationality').invalid && profileForm.get('nationality').touched">
+          Nationality is required.
+        </div>
+        <br />
+  
+        <label class="bodyFont">Gender</label>
+        <div class="roundedInput">
+          <select class="bodyFont textGray" formControlName="gender" required>
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+          </select>
+        </div>
+        <br />
+  
+        <label class="bodyFont">Date of birth</label>
+        <div>
+          <div class="roundedInput">
+            <select class="bodyFont textGray" formControlName="day" aria-label="Day" required>
+              <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+            </select>
+          </div>
+          <div class="roundedInput">
+            <select class="bodyFont textGray" formControlName="month" aria-label="Month" required>
+              <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+            </select>
+          </div>
+          <div class="roundedInput">
+            <select class="bodyFont textGray" formControlName="year" aria-label="Year" required>
+              <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="bodyFont lightFont red-text" *ngIf="profileForm.get('day').invalid && profileForm.get('day').touched">Day is required.</div>
+        <div class="bodyFont lightFont red-text" *ngIf="profileForm.get('month').invalid && profileForm.get('month').touched">Month is required.</div>
+        <div class="bodyFont lightFont red-text" *ngIf="profileForm.get('year').invalid && profileForm.get('year').touched">Year is required.</div>
+        <br />
+      </div>
+  
+      <div>
+        <button class="FilledButtons complete-profile" type="submit" [disabled]="profileForm.invalid">
+          Complete Profile
+        </button>
+      </div>
+    </form>
+  </main>
